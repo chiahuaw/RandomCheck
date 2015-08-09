@@ -11,13 +11,16 @@ shinyUI(fluidPage(
       sliderInput("runcase",
                   "隨機抽選案件數",
                   min=1,
-                  max=nrow(Temp),
+                  max=length(unique(Temp[,1])),
                   value=2,
-                  step=1)
+                  step=1),
+      dateInput("checkdate","預定督導日期：",value=Sys.Date()),
+      print(paste("系統時間：",Sys.Date()))
     ),
 
     mainPanel(
-      dataTableOutput("table")
+      dataTableOutput("table"),
+      downloadButton('downloadData', '下載抽選結果CSV檔')
     )
   )
 ))
