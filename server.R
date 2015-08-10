@@ -12,10 +12,8 @@ shinyServer(function(input, output) {
     output$table <- renderDataTable({
       
       #隨機挑選案號
-      temp2<-sample(unique(Temp[,1]),input$runcase)
-      rcase<<-data.frame()
-      for (i in 1:length(temp2)) {rcase<<-rbind(rcase,Temp[Temp$CaseNumber==temp2[i],])} 
-      rcase<<-unique(rcase)
+      rcase<<-Temp[sample(seq(1,nrow(Temp),1),input$runcase),]
+
       })
     
     output$downloadData <- downloadHandler(

@@ -35,7 +35,7 @@ myTemp <- function(url){
   #標籤裡面還有一些沒有用到的東西沒關係，事後再一併移除
   tablehead <- xpathSApply(get_url_parse, "//table[@class='TurnInTable']/tr/td", xmlValue)
   #將擷取到的關鍵字轉成容易閱讀的矩陣格式
-  table <- matrix(tablehead, ncol = 12, byrow = TRUE)
+  table <- matrix(tablehead, ncol = 8, byrow = TRUE)
   #回傳值
   return(table)
 }
